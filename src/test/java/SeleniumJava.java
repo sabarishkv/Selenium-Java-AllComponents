@@ -37,6 +37,7 @@ public class SeleniumJava {
         System.out.println(webDriver.getTitle());
         System.out.println(webDriver.getCurrentUrl());
         webDriver.quit();
+        //quits browser after quit
     }
 
 }
