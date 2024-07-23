@@ -3,18 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>org.example</groupId>
-    <artifactId>Selenium-Java-AllComponents</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <modules>
-        <module>SwagLabsApplication</module>
-        <module>LamdaTestComponents</module>
-        <module>common-components</module>
-        <module>BasicSampleWebPage</module>
-        <module>TestNGProject</module>
-    </modules>
+    <parent>
+        <groupId>org.example</groupId>
+        <artifactId>Selenium-Java-AllComponents</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
@@ -38,6 +31,8 @@
 
 
     </dependencies>
+
+    <artifactId>common-components</artifactId>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

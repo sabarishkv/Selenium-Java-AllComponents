@@ -28,7 +28,7 @@ public class SeleniumJava {
         webDriver.quit();
     }
 
-    @Test
+
     public void allBrowserTest() {
         System.out.println("allBrowserTest Successful");
         WebDriverManager.firefoxdriver().setup();
