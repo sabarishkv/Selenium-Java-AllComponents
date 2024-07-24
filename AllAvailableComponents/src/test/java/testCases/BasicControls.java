@@ -10,6 +10,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.File;
+
 public class BasicControls {
 
     WebDriver chrome;
@@ -20,8 +22,6 @@ public class BasicControls {
     public By lastNameField = By.xpath("//input[@id='lastName']");
     public By emailField = By.xpath("//input[@id='email']");
     public By passwordField = By.xpath("//input[@id='password']");
-
-
 
     public Dimension setBrwoserDimension() {
         int width = 1440, height = 779;
