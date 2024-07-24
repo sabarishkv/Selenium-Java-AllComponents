@@ -4,6 +4,7 @@ import dev.failsafe.internal.util.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -29,7 +30,6 @@ public class BasicControlsPage {
     public By navigateHome = By.xpath("//a[@id='navigateHome']");
 
     public By registrationButton = By.xpath("//button[@id='registerbtn']");
-
 
 
     public void attemptRadio(WebDriver driver, By locator) {
@@ -68,6 +68,10 @@ public class BasicControlsPage {
         }
     }
 
-
+    public void mouseHover(WebDriver driver, By locator) {
+        System.out.println("Locator to click: "+locator);
+        Actions hov = new Actions(driver);
+        hov.moveToElement(driver.findElement(locator)).build().perform();
+    }
 }
 
