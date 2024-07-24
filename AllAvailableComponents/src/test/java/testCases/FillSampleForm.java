@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.Assertion;
 import page_objects.BasicControlsPage;
+import page_objects.DropDownPage;
 import page_objects.HomePage;
 
 import java.io.File;
@@ -23,6 +24,7 @@ public class FillSampleForm {
     Assertion hardAssert = new Assertion();
     public String applicationUrl = "https://www.hyrtutorials.com/p/basic-controls.html";
     BasicControlsPage bcp = new BasicControlsPage();
+    DropDownPage dp = new DropDownPage();
     HomePage hm = new HomePage();
     ChromeOptions co = new ChromeOptions();
 
@@ -36,12 +38,12 @@ public class FillSampleForm {
         Thread.sleep(1000);
         System.out.println("The String to compare is: " + currentExpected + "Locator available is: " + locator);
         String textDisplayed = driver.findElement(locator).getText();
-        System.out.println("The text in the locator is:"+ textDisplayed);
+        System.out.println("The text in the locator is:" + textDisplayed);
         Assert.assertEquals(currentExpected, textDisplayed);
         System.out.println("The displayed text is: " + textDisplayed + "And equals to " + currentExpected);
     }
 
-    public void installBlockAdd(){
+    public void installBlockAdd() {
         System.out.println("Initialising the browser and blocking adds ");
         co.addExtensions(new File("./Extensions/AdBlock.crx"));
         chrome = WebDriverManager.chromedriver().capabilities(co).create();
@@ -52,7 +54,7 @@ public class FillSampleForm {
         System.out.println("Initialising the browser and blocking adds ");
         co.addExtensions(new File("./Extensions/AdBlock.crx"));
         chrome = WebDriverManager.chromedriver().capabilities(co).create();
-        Thread.sleep(60000);
+        Thread.sleep(10000);
         System.out.println("Launching Browser");
         chrome.get(applicationUrl);
         chrome.manage().window().setSize(setBrwoserDimension());
@@ -60,7 +62,7 @@ public class FillSampleForm {
     }
 
 
-    @Test
+   // @Test(priority = 1)
     public void fillForm() throws InterruptedException {
         Thread.sleep(2000);
         bcp.enterTextField(chrome, "MacBook M1", bcp.firstNameField);
@@ -75,6 +77,26 @@ public class FillSampleForm {
         assertDisplayedText("Registration is Successful", bcp.successMessage, chrome);
         bcp.attemptRadio(chrome, bcp.navigateHome);
         System.out.println("Home Page URL" + chrome.getCurrentUrl());
+
+    }
+
+    @Test(priority = 1)
+    public void dropDownSelection() throws InterruptedException {
+        Thread.sleep(2000);
+        bcp.mouseHover(chrome, dp.seleniumPracticeOption);
+        bcp.attemptRadio(chrome, dp.dropdownPage);
+
+        //Single Dropdown
+        dp.selectOptionValue("js", dp.dropDownCourse, chrome, "storeValue");
+        dp.selectOptionVIndex(1, dp.dropDownCourse, chrome,"storeValue");
+        dp.selectOptionVisibleText("Python", dp.dropDownCourse, chrome,"storeValue");
+
+        // MultiSelectDropdown
+        dp.selectOptionValue("ec", dp.multiDropDown, chrome, "storeValue");
+        dp.selectOptionVIndex(3, dp.multiDropDown, chrome,"storeValue");
+        dp.selectOptionVisibleText("Visual Studio", dp.multiDropDown, chrome,"storeValue");
+        dp.selectOptionValue("ij", dp.multiDropDown, chrome, "storeValue");
+        dp.deSelectOptionVisibleText("Visual Studio", dp.multiDropDown, chrome, "storeValue");
 
     }
 
