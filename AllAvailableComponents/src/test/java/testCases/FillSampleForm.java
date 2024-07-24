@@ -14,8 +14,10 @@ import org.testng.asserts.Assertion;
 import page_objects.BasicControlsPage;
 import page_objects.DropDownPage;
 import page_objects.HomePage;
+import utils.UtilsCommon;
 
 import java.io.File;
+import java.io.IOException;
 
 public class FillSampleForm {
 
@@ -27,6 +29,7 @@ public class FillSampleForm {
     DropDownPage dp = new DropDownPage();
     HomePage hm = new HomePage();
     ChromeOptions co = new ChromeOptions();
+    UtilsCommon uc = new UtilsCommon();
 
     public Dimension setBrwoserDimension() {
         int width = 1440, height = 779;
@@ -50,13 +53,14 @@ public class FillSampleForm {
     }
 
     @BeforeTest
-    public WebDriver launchBrowser() throws InterruptedException {
+    public WebDriver launchBrowser() throws InterruptedException, IOException {
         System.out.println("Initialising the browser and blocking adds ");
         co.addExtensions(new File("./Extensions/AdBlock.crx"));
         chrome = WebDriverManager.chromedriver().capabilities(co).create();
         Thread.sleep(10000);
         System.out.println("Launching Browser");
         chrome.get(applicationUrl);
+        uc.performScreenShot(chrome,"launch.png");
         chrome.manage().window().setSize(setBrwoserDimension());
         return chrome;
     }
@@ -81,10 +85,11 @@ public class FillSampleForm {
     }
 
     @Test(priority = 1)
-    public void dropDownSelection() throws InterruptedException {
+    public void dropDownSelection() throws InterruptedException, IOException {
         Thread.sleep(2000);
         bcp.mouseHover(chrome, dp.seleniumPracticeOption);
         bcp.attemptRadio(chrome, dp.dropdownPage);
+        uc.performScreenShot(chrome,"dropdown.png");
 
         //Single Dropdown
         dp.selectOptionValue("js", dp.dropDownCourse, chrome, "storeValue");
