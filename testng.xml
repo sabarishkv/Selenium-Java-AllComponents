@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test
+            name="Fill Sample Form">
+        <classes>
+            <class name="testCases.FillSampleForm">
+                <methods>
+                    <include name="fillBasicDetails"/>
+                </methods>
+            </class>
+            <class name="testCases.FillSampleForm">
+                <methods>
+                    <include name="dropDownSelection"/>
+                </methods>
+            </class>
+            <class name="testCases.TestingProject">
+                <methods>
+                    <include name="newModule"/>
+                </methods>
+            </class>
+            <class name="testCases.SeleniumJava">
+                <methods>
+                    <include name="allBrowserTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

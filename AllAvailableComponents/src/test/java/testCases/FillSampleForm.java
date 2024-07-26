@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.Assertion;
@@ -60,13 +59,13 @@ public class FillSampleForm {
         Thread.sleep(10000);
         System.out.println("Launching Browser");
         chrome.get(applicationUrl);
-        uc.performScreenShot(chrome,"launch.png");
+        uc.performScreenShot(chrome, "launch.png");
         chrome.manage().window().setSize(setBrwoserDimension());
         return chrome;
     }
 
 
-   // @Test(priority = 1)
+    // @Test(priority = 1)
     public void fillForm() throws InterruptedException {
         Thread.sleep(2000);
         bcp.enterTextField(chrome, "MacBook M1", bcp.firstNameField);
@@ -89,17 +88,15 @@ public class FillSampleForm {
         Thread.sleep(2000);
         bcp.mouseHover(chrome, dp.seleniumPracticeOption);
         bcp.attemptRadio(chrome, dp.dropdownPage);
-        uc.performScreenShot(chrome,"dropdown.png");
-
+        uc.performScreenShot(chrome, "dropdown.png");
         //Single Dropdown
         dp.selectOptionValue("js", dp.dropDownCourse, chrome, "storeValue");
-        dp.selectOptionVIndex(1, dp.dropDownCourse, chrome,"storeValue");
-        dp.selectOptionVisibleText("Python", dp.dropDownCourse, chrome,"storeValue");
-
+        dp.selectOptionVIndex(1, dp.dropDownCourse, chrome, "storeValue");
+        dp.selectOptionVisibleText("Python", dp.dropDownCourse, chrome, "storeValue");
         // MultiSelectDropdown
         dp.selectOptionValue("ec", dp.multiDropDown, chrome, "storeValue");
-        dp.selectOptionVIndex(3, dp.multiDropDown, chrome,"storeValue");
-        dp.selectOptionVisibleText("Visual Studio", dp.multiDropDown, chrome,"storeValue");
+        dp.selectOptionVIndex(3, dp.multiDropDown, chrome, "storeValue");
+        dp.selectOptionVisibleText("Visual Studio", dp.multiDropDown, chrome, "storeValue");
         dp.selectOptionValue("ij", dp.multiDropDown, chrome, "storeValue");
         dp.deSelectOptionVisibleText("Visual Studio", dp.multiDropDown, chrome, "storeValue");
 
@@ -113,4 +110,7 @@ public class FillSampleForm {
         chrome.quit();
 
     }
+
+
+
 }
