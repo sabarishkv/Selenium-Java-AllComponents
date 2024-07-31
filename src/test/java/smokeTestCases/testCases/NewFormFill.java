@@ -13,13 +13,12 @@ import org.testng.asserts.Assertion;
 import page_objects.BasicControlsPage;
 import page_objects.DropDownPage;
 import page_objects.HomePage;
-import page_objects.WindowsPage;
 import utils.UtilsCommon;
 
 import java.io.File;
 import java.io.IOException;
 
-public class FillSampleForm {
+public class NewFormFill {
 
     WebDriver chrome;
     Dimension dm;
@@ -30,8 +29,6 @@ public class FillSampleForm {
     HomePage hm = new HomePage();
     ChromeOptions co = new ChromeOptions();
     UtilsCommon uc = new UtilsCommon();
-
-    WindowsPage wp = new WindowsPage();
 
     public Dimension setBrwoserDimension() {
         int width = 1440, height = 779;
@@ -68,7 +65,7 @@ public class FillSampleForm {
     }
 
 
-     @Test(priority = 1)
+    @Test(priority = 2)
     public void fillForm() throws InterruptedException {
         Thread.sleep(2000);
         bcp.enterTextField(chrome, "MacBook M1", bcp.firstNameField);
@@ -86,7 +83,7 @@ public class FillSampleForm {
 
     }
 
-      @Test(priority = 2)
+    @Test(priority = 1)
     public void dropDownSelection() throws InterruptedException, IOException {
         Thread.sleep(2000);
         bcp.mouseHover(chrome, dp.seleniumPracticeOption);
@@ -105,13 +102,6 @@ public class FillSampleForm {
 
     }
 
-    @Test (priority = -1)
-    public  void  goToWindows() throws InterruptedException {
-        System.out.println("Displying the active tabs");
-        wp.tabSwitch(chrome);
-        Thread.sleep(6000);
-
-    }
 
     @AfterTest
     public void quitBrowser() throws InterruptedException {

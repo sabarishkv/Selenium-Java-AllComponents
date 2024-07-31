@@ -69,11 +69,11 @@ public class InterviewClass {
 
     WebDriver test;
 
-    public class browse() {
-
-
-         chrome.get("google.com");
-         Thread.sl
-    }
+//    public class browse() {
+//
+//
+//         chrome.get("google.com");
+//         Thread.sl
+//    }
 
 }
